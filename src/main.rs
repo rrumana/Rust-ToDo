@@ -41,6 +41,7 @@ impl Todo {
     }
 
     fn complete(&mut self, key: &String) -> Option<()> {
+        // search the hashmap for the key
         match self.map.get_mut(key) {
             Some(v) => Some(*v = String::from("Done")),
             None => None,
@@ -48,10 +49,12 @@ impl Todo {
     }
 
     fn contains(&mut self, key: &String) -> bool {
+        // Return true if the key exists, false otherwise
         return self.map.contains_key(key)
     }
 
     fn print(&mut self, key: &String) {
+        // printing the hashmap based on input string
         println!("Printing {} items", key);
         if key == "To Do" {
             for (key, value) in &self.map {

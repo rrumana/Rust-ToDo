@@ -34,6 +34,7 @@ impl Todo {
         let f = std::fs::OpenOptions::new()
             .write(true)
             .create(true)
+            .truncate(true)
             .open("db.json")?;
         // write to file with serde
         serde_json::to_writer_pretty(f, &self.map)?;
@@ -43,14 +44,17 @@ impl Todo {
     fn complete(&mut self, key: &String) -> Option<()> {
         // search the hashmap for the key
         match self.map.get_mut(key) {
-            Some(v) => Some(*v = String::from("Done")),
+            Some(v) => {
+                *v = String::from("Done");
+                Some(())
+                },
             None => None,
         }
     }
 
     fn contains(&mut self, key: &String) -> bool {
         // Return true if the key exists, false otherwise
-        return self.map.contains_key(key)
+        self.map.contains_key(key)
     }
 
     fn print(&mut self, key: &String) {

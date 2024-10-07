@@ -1,7 +1,8 @@
 {
-  "sleep": "To Do",
-  "debug": "To Do",
-  "repeat": "Done",
+  "reserve taxi": "To Do",
   "eat": "To Do",
-  "reserve taxi": "To Do"
+  "repeat": "Done",
+  "sleep": "To Do",
+  "Refactor code": "To Do",
+  "debug": "Done"
 }
